@@ -1,16 +1,27 @@
-const express = require('express');
-const app = express();
+const express = require('express'); 
+const app = express(); 
+
 app.get('/', (req, res) => {
-res.json({ message: 'Hola, DevOps!' });
+    res.json({ message: 'Hola, DevOps!' }); 
 });
+
 app.get('/health', (req, res) => {
-res.json({ status: 'OK', timestamp: new Date() });
+    res.json({ status: 'OK', timestamp: new Date() }); 
 });
-module.exports = app;
+
+// Endpoint
+app.get('/version', (req, res) => {
+    res.json({ version: '1.0.0' }); 
+});
+
+module.exports = app; 
+
 if (require.main === module) {
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-console.log(`Server running on port ${PORT}`);
-});
+    const PORT = process.env.PORT || 3000; 
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`); 
+    });
 }
+
+
 
